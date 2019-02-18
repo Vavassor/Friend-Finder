@@ -19,7 +19,7 @@ function findFriend(person) {
 
     if (totalDifference < smallestDifference) {
       smallestDifference = totalDifference;
-      result = friends[i];
+      result = friend;
     }
   }
 
@@ -33,7 +33,7 @@ app.get("/api/friends", (request, response) => {
 
 app.post("/api/friends", (request, response) => {
   const friend = findFriend(request.body);
-  response.send(friend);
+  response.send(JSON.stringify(friend));
 });
 
 module.exports = app;

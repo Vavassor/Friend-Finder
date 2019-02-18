@@ -1,7 +1,7 @@
 const friends = [
   {
-    "name": "Ahmed",
-    "photo": "https://media.licdn.com/mpr/mpr/shrinknp_400_400/p/6/005/064/1bd/3435aa3.jpg",
+    "name": "Andrew",
+    "photo": "https://pbs.twimg.com/profile_images/1024834548956196864/LVbj26ut_400x400.jpg",
     "scores": [
       5,
       1,

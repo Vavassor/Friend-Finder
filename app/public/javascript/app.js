@@ -1,28 +1,7 @@
 "use strict";
 
-function ajaxCall(spec) {
-  return new Promise((resolve, reject) => {
-    const request = new XMLHttpRequest();
-    request.open(spec.method, spec.url);
-    request.setRequestHeader("Content-Type", spec.contentType);
-    request.onload = () => {
-      if (request.status === 200) {
-        return resolve(request.response);
-      } else {
-        return reject(Error(request.statusText));
-      }
-    };
-    request.onerror = (error) => {
-      return reject(Error("Network Error: " + error));
-    };
-    request.send(spec.data);
-  });
-}
 
-
-const survey = document.getElementById("survey");
-
-survey.addEventListener("submit", (event) => {
+$("#survey").submit((event) => {
   event.preventDefault();
 
   const passedValidation = survey.checkValidity();
@@ -32,30 +11,34 @@ survey.addEventListener("submit", (event) => {
     event.stopPropagation();
   } else {
     const person = {
-      name: document.getElementById("name").value,
-      photoLink: document.getElementById("photo-link").value,
+      name: $("#name").val(),
+      photoLink: $("#photo-link").val(),
       scores: [
-        parseInt(document.getElementById("question-1").value),
-        parseInt(document.getElementById("question-2").value),
-        parseInt(document.getElementById("question-3").value),
-        parseInt(document.getElementById("question-4").value),
-        parseInt(document.getElementById("question-5").value),
-        parseInt(document.getElementById("question-6").value),
-        parseInt(document.getElementById("question-7").value),
-        parseInt(document.getElementById("question-8").value),
-        parseInt(document.getElementById("question-9").value),
-        parseInt(document.getElementById("question-10").value),
+        parseInt($("#question-1").val()),
+        parseInt($("#question-2").val()),
+        parseInt($("#question-3").val()),
+        parseInt($("#question-4").val()),
+        parseInt($("#question-5").val()),
+        parseInt($("#question-6").val()),
+        parseInt($("#question-7").val()),
+        parseInt($("#question-8").val()),
+        parseInt($("#question-9").val()),
+        parseInt($("#question-10").val()),
       ],
     };
 
-    ajaxCall({
-      contentType: "application/json",
-      data: JSON.stringify(person),
+    $.ajax("/api/friends", {
+      data: person,
+      dataType: "json",
       method: "POST",
-      url: "/api/friends",
     })
     .then((response) => {
-      console.log(response);
+      const friend = response;
+
+      $("#friend-name").text(friend["name"]);
+      $("#friend-photo").attr("src", friend["photo"]);
+
+      $("#match-modal").modal("show");
     });
   }
 });
