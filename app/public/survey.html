@@ -4,8 +4,50 @@
   <meta charset="utf-8">
   <title>Survey</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha256-YLGeXaapI0/5IgZopewRJcFXomhRMlYYjugPLSyNjTY=" crossorigin="anonymous">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha256-CjSoeELFOcH0/uxWu6mC/Vlrc1AARqbm/jiiImDGV3s=" crossorigin="anonymous"></script>
+  <script src="javascript/app.js" defer></script>
 </head>
 <body>
-  <p>Here's the survey placeholder page.</p>
+  <main class="container">
+    <form id="survey" novalidate>
+      <h2>About You</h2>
+
+      <div class="form-group">
+        <label for="name">Name</label>
+        <input type="text" class="form-control" id="name" placeholder="Jane Smith" required>
+        <div class="invalid-feedback">
+          Please provide a name.
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="photo-link">Link to photo image</label>
+        <input type="url" class="form-control" id="photo-link" placeholder="https://example.com/portrait.jpg" required>
+        <div class="invalid-feedback">
+          Please provide a valid link.
+        </div>
+      </div>
+
+      <h2>Questionnaire</h2>
+
+      <div class="form-group">
+        <label for="question-1">I dig questionnaires.</label>
+        <select id="question-1" required>
+          <option value="">Select an option</option>
+          <option value="1">1 (Strongly Disagree)</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5 (Strongly Agree)</option>
+        </select>
+        <div class="invalid-feedback">
+          Please select an option.
+        </div>
+      </div>
+
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+  </main>
 </body>
 </html>

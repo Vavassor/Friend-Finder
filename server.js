@@ -9,6 +9,8 @@ let app;
 
 app = express();
 
+app.use(express.static("app/public"));
+
 app.use(apiRoutes);
 app.use(htmlRoutes);
 
