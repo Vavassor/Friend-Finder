@@ -28,7 +28,8 @@ $("#survey").submit((event) => {
     };
 
     $.ajax("/api/friends", {
-      data: person,
+      contentType: "application/json",
+      data: JSON.stringify(person),
       dataType: "json",
       method: "POST",
     })

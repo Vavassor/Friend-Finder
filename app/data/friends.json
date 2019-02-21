@@ -1,6 +1,6 @@
-const friends = [
+[
   {
-    "name": "Andrew",
+    "name": "Andrew Dawson",
     "photo": "https://pbs.twimg.com/profile_images/1024834548956196864/LVbj26ut_400x400.jpg",
     "scores": [
       5,
@@ -15,6 +15,4 @@ const friends = [
       1
     ]
   }
-];
-
-module.exports = friends;
+]
